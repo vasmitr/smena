@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-
-const NASA_ENDPOINT =
-  'https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY';
+import Child from './components/Child';
 
 class Example extends Component {
   state = {
@@ -14,20 +12,22 @@ class Example extends Component {
     setTimeout(() => {
       this.setState({asteroids: [{name: 1}, {name: 2}, {name: 3}], isLoading: false});
     }, 1000);
+
+    setInterval(() => {
+      this.setState((
+        {asteroids} //
+      ) => ({asteroids: asteroids.map(asteroid => ({name: asteroid.name + 1}))}));
+    }, 100);
   }
 
   render() {
     const {asteroids, isLoading} = this.state;
+
     return (
       <div>
         {isLoading
           ? <p>Loading</p>
-          : asteroids.map((asteroid, i) =>
-              <p key={i}>
-                {asteroid.name}
-              </p>
-            )}
-        {}
+          : asteroids.map((asteroid, i) => <Child key={i} name={asteroid.name + i} />)}
       </div>
     );
   }
