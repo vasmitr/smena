@@ -10,15 +10,28 @@ class Example extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
     setTimeout(() => {
-      this.setState({asteroids: [{name: 1}, {name: 2}, {name: 3}], isLoading: false});
+      this.setState({asteroids: [{name: 1, id: 0}, {name: 2, id: 1}, {name: 3, id: 2}], isLoading: false});
     }, 1000);
 
     setInterval(() => {
-      this.setState((
-        {asteroids} //
-      ) => ({asteroids: asteroids.map(asteroid => ({name: asteroid.name + 1}))}));
-    }, 100);
+      this.setState(({asteroids}) => ({
+        asteroids: asteroids.map(asteroid => ({name: asteroid.name + 1, id: asteroid.id}))
+      }));
+    }, 500);
   }
+
+  handleClick = (id) => {
+    console.log(id)
+    this.setState(({asteroids}) => ({
+      asteroids: asteroids.map(asteroid => {
+        if(asteroid.id === id) {
+          return {name: 0, id: asteroid.id};
+        } else {
+          return asteroid;
+        }
+      })
+    }));
+  };
 
   render() {
     const {asteroids, isLoading} = this.state;
@@ -27,7 +40,7 @@ class Example extends Component {
       <div>
         {isLoading
           ? <p>Loading</p>
-          : asteroids.map((asteroid, i) => <Child key={i} name={asteroid.name + i} />)}
+          : asteroids.map(({name, id}) => <Child key={id} name={name} id={id} onClick={this.handleClick} />)}
       </div>
     );
   }

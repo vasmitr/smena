@@ -4,6 +4,8 @@ const styles = {
   element: {
     width: 200
   }
-}
-export default ({name}) =>
-  <div style={styles.element}>{name}</div>
+};
+export default ({id, name, onClick}) =>
+  <div onClick={() => onClick(id)} style={styles.element}>
+    {name}
+  </div>;
