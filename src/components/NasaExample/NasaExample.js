@@ -5,43 +5,26 @@ const NASA_ENDPOINT =
 
 class Example extends Component {
   state = {
-    isLoading: false,
+    isLoading: true,
     asteroids: []
   };
 
   componentDidMount() {
     this.setState({isLoading: true});
-    fetch(NASA_ENDPOINT)
-      .then(response => {
-        if (response.status !== 200) {
-          return new Promise.reject('status != 200');
-        }
-        return response.json();
-      })
-      .then(data => {
-        let asteroids = [];
-        for (let date in data.near_earth_objects) {
-          asteroids = asteroids.concat(data.near_earth_objects[date]);
-        }
-        this.setState({asteroids, isLoading: false});
-      });
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps, nextState);
+    setTimeout(() => {
+      this.setState({asteroids: [{name: 1}, {name: 2}, {name: 3}], isLoading: false});
+    }, 1000);
   }
 
   render() {
     const {asteroids, isLoading} = this.state;
-    console.log(asteroids);
     return (
       <div>
         {isLoading
           ? <p>Loading</p>
           : asteroids.map((asteroid, i) =>
               <p key={i}>
-                {asteroid.name} {asteroid.estimated_diameter.meters.estimated_diameter_min.toFixed(2)} -{' '}
-                {asteroid.estimated_diameter.meters.estimated_diameter_max.toFixed(2)} meters
+                {asteroid.name}
               </p>
             )}
         {}
