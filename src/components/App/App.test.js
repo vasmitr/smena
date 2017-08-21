@@ -6,7 +6,3 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<App />, div);
 });
-
-it('test', () => {
-  expect(1).toEqual(1);
-})
