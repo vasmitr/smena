@@ -20,11 +20,10 @@ class Example extends Component {
     }, 500);
   }
 
-  handleClick = (id) => {
-    console.log(id)
+  handleClick = id => {
     this.setState(({asteroids}) => ({
       asteroids: asteroids.map(asteroid => {
-        if(asteroid.id === id) {
+        if (asteroid.id === id) {
           return {name: 0, id: asteroid.id};
         } else {
           return asteroid;
@@ -40,7 +39,7 @@ class Example extends Component {
       <div>
         {isLoading
           ? <p>Loading</p>
-          : asteroids.map(({name, id}) => <Child key={id} name={name} id={id} onClick={this.handleClick} />)}
+          : asteroids.map(({name, id}) => <Child name={name} id={id} onClick={this.handleClick} />)}
       </div>
     );
   }
