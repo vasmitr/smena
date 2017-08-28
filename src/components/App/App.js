@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
-import {Layout, Menu, Icon} from 'antd'
+import {Layout} from 'antd'
 import styled from 'styled-components'
 import 'antd/dist/antd.css'
+import {Switch, Route, Redirect} from 'react-router-dom'
+import USD_BTC from 'pages/USD_BTC'
+import USD_ETH from 'pages/USD_ETH'
+import SideNav from 'components/SideNav'
 
 const {Content, Footer, Sider} = Layout
 
@@ -17,34 +21,27 @@ class App extends Component {
   state = {
     collapsed: false
   }
+
   onCollapse = collapsed => {
-    console.log(collapsed)
     this.setState({collapsed})
   }
 
   render() {
+    const {collapsed} = this.state
+
     return (
       <StyledLayout>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-              <Icon type="pie-chart" />
-              <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="file" />
-              <span>File</span>
-            </Menu.Item>
-          </Menu>
+        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+          <SideNav />
         </Sider>
 
         <Layout>
           <Content style={{margin: '0 16px'}}>
-
+            <Switch>
+              <Route path="/btc" component={USD_BTC} />
+              <Route path="/eth" component={USD_ETH} />
+              <Redirect from="/" to="/btc" exact />
+            </Switch>
           </Content>
           <StyledFooter>Smena school © 2017</StyledFooter>
         </Layout>
