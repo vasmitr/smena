@@ -9,7 +9,7 @@ class USD_BTC extends Component {
   }
 
   componentDidMount() {
-    getCandles().then(data => {
+    getCandles('BTC').then(data => {
       this.setState({
         isLoading: false,
         data: data
