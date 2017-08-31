@@ -6,6 +6,7 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import USD_BTC from 'pages/USD_BTC'
 import USD_ETH from 'pages/USD_ETH'
 import SideNav from 'components/SideNav'
+import {connect} from 'react-redux'
 
 const {Content, Footer, Sider} = Layout
 
@@ -18,16 +19,12 @@ const StyledFooter = styled(Footer)`
 `
 
 class App extends Component {
-  state = {
-    collapsed: false
-  }
-
   onCollapse = collapsed => {
     this.setState({collapsed})
   }
 
   render() {
-    const {collapsed} = this.state
+    const {collapsed} = this.props
 
     return (
       <StyledLayout>
@@ -50,4 +47,8 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => ({
+  collapsed: state.sider.collapsed
+})
+
+export default connect(mapStateToProps)(App)
