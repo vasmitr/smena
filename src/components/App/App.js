@@ -7,28 +7,19 @@ import USD_BTC from 'pages/USD_BTC'
 import USD_ETH from 'pages/USD_ETH'
 import SideNav from 'components/SideNav'
 import {connect} from 'react-redux'
+import {changeCollapse} from 'actions/siderActions'
 
 const {Content, Footer, Sider} = Layout
-
-const StyledLayout = styled(Layout)`
-  height: 100%;
-`
-
-const StyledFooter = styled(Footer)`
-  textAlign: center
-`
+const StyledLayout = styled(Layout)`height: 100%;`
+const StyledFooter = styled(Footer)`textAlign: center;`
 
 class App extends Component {
-  onCollapse = collapsed => {
-    this.setState({collapsed})
-  }
-
   render() {
-    const {collapsed} = this.props
+    const {collapsed, onCollapse} = this.props
 
     return (
       <StyledLayout>
-        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <SideNav />
         </Sider>
 
@@ -51,4 +42,8 @@ const mapStateToProps = state => ({
   collapsed: state.sider.collapsed
 })
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => ({
+  onCollapse: value => dispatch(changeCollapse(value))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
