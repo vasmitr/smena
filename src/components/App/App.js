@@ -1,33 +1,25 @@
-import React, { Component } from "react";
-import { Layout } from "antd";
-import styled from "styled-components";
-import "antd/dist/antd.css";
-import { Switch, Route, Redirect } from "react-router-dom";
-import USD_BTC from "pages/USD_BTC";
-import USD_ETH from "pages/USD_ETH";
-import SideNav from "components/SideNav";
+import React, {Component} from 'react'
+import {Layout} from 'antd'
+import styled from 'styled-components'
+import 'antd/dist/antd.css'
+import {Switch, Route, Redirect} from 'react-router-dom'
+import USD_BTC from 'pages/USD_BTC'
+import USD_ETH from 'pages/USD_ETH'
+import SideNav from 'components/SideNav'
+import {connect} from 'react-redux'
+import {changeCollapse} from 'actions/siderActions'
 
-const { Content, Footer, Sider } = Layout;
-
-const StyledLayout = styled(Layout)`height: 100%;`;
-
-const StyledFooter = styled(Footer)`textAlign: center;`;
+const {Content, Footer, Sider} = Layout
+const StyledLayout = styled(Layout)`height: 100%;`
+const StyledFooter = styled(Footer)`textAlign: center;`
 
 class App extends Component {
-  state = {
-    collapsed: false
-  };
-  
-  onCollapse = collapsed => {
-    this.setState({ collapsed });
-  };
-
   render() {
-    const { collapsed } = this.state;
+    const {collapsed, onCollapse} = this.props
 
     return (
       <StyledLayout>
-        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <SideNav />
         </Sider>
 
@@ -46,4 +38,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  collapsed: state.sider.collapsed
+})
+
+const mapDispatchToProps = dispatch => ({
+  onCollapse: value => dispatch(changeCollapse(value))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
