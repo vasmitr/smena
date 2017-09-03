@@ -6,32 +6,30 @@ const SideNav = withRouter(props => <SideNavMenu {...props} />)
 
 class SideNavMenu extends Component {
 
-whichLinkSelected = (path) => {
-    if (path === '/btc') {
-        return ['1']
-    } else if (path === '/eth') {
-        return ['2']
-    } else {
-        return ['1']
-    }
-}
 
   render() {
     return (
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={this.whichLinkSelected(this.props.location.pathname)}>
-        <Menu.Item key="1">
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.props.location.pathname]}>
+        <Menu.Item key="/etc">
           <NavLink to="/btc">
             <Icon type="pie-chart" />
             <span>Bitcoin</span>
           </NavLink>
         </Menu.Item>
 
-        <Menu.Item key="2">
+        <Menu.Item key="/eth">
           <NavLink to="/eth">
             <Icon type="pie-chart" />
             <span>Ethirium</span>
           </NavLink>
         </Menu.Item>
+
+        <Menu.Item key="/profile">
+        <NavLink to="/profile">
+          <Icon type="user" />
+          <span>Profile</span>
+        </NavLink>
+      </Menu.Item>
       </Menu>
     );
   }
