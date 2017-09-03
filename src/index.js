@@ -9,6 +9,11 @@ import getStore from './store'
 
 const store = getStore({})
 
+import {Provider} from 'react-redux'
+import getStore from './store'
+
+const store = getStore()
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
