@@ -2,21 +2,33 @@ import React from 'react'
 import {Menu, Icon} from 'antd'
 import {NavLink} from 'react-router-dom'
 
-export default () =>
-  <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+const navElements = [
+  {
+    path: '/btc',
+    icon: 'pie-chart',
+    label: 'Bitcoin'
+  },
+  {
+    path: '/eth',
+    icon: 'pie-chart',
+    label: 'Ethereum'
+  },
+  {
+    path: '/profile',
+    icon: 'user',
+    label: 'profile'
+  }
+]
 
-    <Menu.Item key="1">
-      <NavLink to='/btc'>
-        <Icon type="pie-chart" />
-        <span>Bitcoin</span>
-      </NavLink>
-    </Menu.Item>
-
-    <Menu.Item key="2">
-      <NavLink to='/eth'>
-        <Icon type="pie-chart" />
-        <span>Ethirium</span>
-      </NavLink>
-    </Menu.Item>
-
+export default ({pathname}) => (
+  <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
+    {navElements.map(el => (
+      <Menu.Item key={el.path}>
+        <NavLink to={el.path}>
+          <Icon type={el.icon} />
+          <span>{el.label}</span>
+        </NavLink>
+      </Menu.Item>
+    ))}
   </Menu>
+)

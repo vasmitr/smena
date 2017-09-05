@@ -1,6 +1,6 @@
 import {CHANGE_COLLAPSE} from 'actions/siderActions'
 
-export default (state = {collapsed: true}, action) => {
+export default (state = {collapsed: false}, action) => {
   switch (action.type) {
     case CHANGE_COLLAPSE:
       return {

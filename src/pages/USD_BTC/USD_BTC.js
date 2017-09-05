@@ -9,21 +9,21 @@ class USD_BTC extends Component {
   }
 
   componentDidMount() {
-    getCandles().then(data => {
-      this.setState({
-        isLoading: false,
-        data: data
-          .map(([date, open, close, high, low, volume]) => ({
-            date,
-            open,
-            close,
-            high,
-            low,
-            volume
-          }))
-          .reverse()
-      })
-    })
+    // getCandles().then(data => {
+    //   this.setState({
+    //     isLoading: false,
+    //     data: data
+    //       .map(([date, open, close, high, low, volume]) => ({
+    //         date,
+    //         open,
+    //         close,
+    //         high,
+    //         low,
+    //         volume
+    //       }))
+    //       .reverse()
+    //   })
+    // })
   }
   render() {
     const {isLoading, data} = this.state
