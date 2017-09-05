@@ -3,6 +3,7 @@ import {Layout, Input} from 'antd'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 import {changeEmail, changeFirstName, changeLastName} from 'actions/profileActions'
+import {getEmail, getLastName, getFirstName} from 'reducers/profile'
 
 const StyledLayout = styled(Layout)`margin: 16px;`
 
@@ -19,15 +20,15 @@ const Profile = ({email, firstName, lastName, changeEmail, changeFirstName, chan
 )
 
 const mapStateToProps = state => ({
-  email: state.profile.email,
-  firstName: state.profile.firstName,
-  lastName: state.profile.lastName
+  email: getEmail(state),
+  firstName: getFirstName(state),
+  lastName: getLastName(state)
 })
 
-const mapDispatchToState = dispatch => ({
-  changeEmail: value => dispatch(changeEmail(value)),
-  changeFirstName: value => dispatch(changeFirstName(value)),
-  changeLastName: value => dispatch(changeLastName(value))
-})
+const mapDispatchToState = {
+  changeEmail,
+  changeFirstName,
+  changeLastName
+}
 
 export default connect(mapStateToProps, mapDispatchToState)(Profile)

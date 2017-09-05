@@ -1,37 +1,20 @@
 import React, {Component} from 'react'
-import {getCandles} from 'api'
-import Chart from 'components/Chart'
+// import Chart from 'components/Chart'
+import {getCandlesRequest} from 'actions/apiActions'
+import {connect} from 'react-redux'
 
 class USD_BTC extends Component {
-  state = {
-    isLoading: true,
-    data: []
-  }
 
   componentDidMount() {
-    // getCandles().then(data => {
-    //   this.setState({
-    //     isLoading: false,
-    //     data: data
-    //       .map(([date, open, close, high, low, volume]) => ({
-    //         date,
-    //         open,
-    //         close,
-    //         high,
-    //         low,
-    //         volume
-    //       }))
-    //       .reverse()
-    //   })
-    // })
+    this.props.getCandlesRequest('usdbtc')
   }
   render() {
-    const {isLoading, data} = this.state
+    const isLoading = true
 
     if (isLoading) return <p>Loading...</p>
 
-    return <Chart data={data} />
+    // return <Chart data={data} />
   }
 }
 
-export default USD_BTC
+export default connect(null, {getCandlesRequest})(USD_BTC)
