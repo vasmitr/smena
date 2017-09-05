@@ -8,6 +8,7 @@ class USD_BTC extends Component {
   componentDidMount() {
     this.props.getCandlesRequest('usdbtc')
   }
+
   render() {
     const isLoading = true
 
