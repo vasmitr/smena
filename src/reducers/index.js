@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
 import sider from './sider'
-import userForm from './userForm'
+import profile from './profile'
+import candles from './candles'
 
 export default combineReducers({
-  sider,
-  userForm
+  candles,
+  profile,
+  sider
 })

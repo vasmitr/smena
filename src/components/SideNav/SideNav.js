@@ -2,37 +2,33 @@ import React, { Component } from "react";
 import { Menu, Icon } from "antd";
 import { NavLink, withRouter } from "react-router-dom";
 
-const SideNav = withRouter(props => <SideNavMenu {...props} />) 
+const navElements = [
+  {
+    path: '/btc',
+    icon: 'pie-chart',
+    label: 'Bitcoin'
+  },
+  {
+    path: '/eth',
+    icon: 'pie-chart',
+    label: 'Ethereum'
+  },
+  {
+    path: '/profile',
+    icon: 'user',
+    label: 'profile'
+  }
+]
 
-class SideNavMenu extends Component {
-
-
-  render() {
-    return (
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={[this.props.location.pathname]}>
-        <Menu.Item key="/etc">
-          <NavLink to="/btc">
-            <Icon type="pie-chart" />
-            <span>Bitcoin</span>
-          </NavLink>
-        </Menu.Item>
-
-        <Menu.Item key="/eth">
-          <NavLink to="/eth">
-            <Icon type="pie-chart" />
-            <span>Ethirium</span>
-          </NavLink>
-        </Menu.Item>
-
-        <Menu.Item key="/profile">
-        <NavLink to="/profile">
-          <Icon type="user" />
-          <span>Profile</span>
+export default ({pathname}) => (
+  <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
+    {navElements.map(el => (
+      <Menu.Item key={el.path}>
+        <NavLink to={el.path}>
+          <Icon type={el.icon} />
+          <span>{el.label}</span>
         </NavLink>
       </Menu.Item>
-      </Menu>
-    );
-  }
-}
-
-export default SideNav;
+    ))}
+  </Menu>
+)
