@@ -5,17 +5,17 @@ import {connect} from 'react-redux'
 import {changeEmail, changeFirstName, changeLastName} from 'actions/profileActions'
 import {getEmail, getLastName, getFirstName} from 'reducers/profile'
 
-const StyledLayout = styled(Layout)`margin: 16px;`
+const StyledLayout = styled(Layout)`margin: 32px;`
 
-const Profile = ({email, firstName, lastName, changeEmail, changeFirstName, changeLastName}) => (
+export const Profile = ({email, firstName, lastName, changeEmail, changeFirstName, changeLastName}) => (
   <StyledLayout>
+    <Input placeholder="last name" value={lastName} onChange={event => changeLastName(event.target.value)} />
     <Input placeholder="email" value={email} onChange={event => changeEmail(event.target.value)} />
     <Input
       placeholder="first name"
       value={firstName}
       onChange={event => changeFirstName(event.target.value)}
     />
-    <Input placeholder="last name" value={lastName} onChange={event => changeLastName(event.target.value)} />
   </StyledLayout>
 )
 
