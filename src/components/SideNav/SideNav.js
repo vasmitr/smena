@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Menu, Icon } from "antd";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const navElements = [
   {
