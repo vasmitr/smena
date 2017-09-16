@@ -1503,9 +1503,6 @@ babel-register@^6.24.1, babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-<<<<<<< HEAD
-babel-runtime@6.26.0, babel-runtime@6.x, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
-=======
 babel-runtime@6.23.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
@@ -1514,7 +1511,6 @@ babel-runtime@6.23.0:
     regenerator-runtime "^0.10.0"
 
 babel-runtime@6.x, babel-runtime@6.x.x, babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0, babel-runtime@^6.5.0, babel-runtime@^6.9.2:
->>>>>>> ee358fca692fd2d54df8eba39c66423671594b10
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -6440,9 +6436,6 @@ react-dev-utils@^4.0.0:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-<<<<<<< HEAD
-"react-dom@^15 || ^16", react-dom@^15.6.1:
-=======
 react-docgen@^2.15.0:
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.18.0.tgz#fe6c57bd10fe2f3ecb32ab800a2db0fb43a93a35"
@@ -6460,7 +6453,6 @@ react-dom-factories@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.1.tgz#c50692ac5ff1adb39d86dfe6dbe3485dacf58455"
 
 react-dom@^15.6.1:
->>>>>>> ee358fca692fd2d54df8eba39c66423671594b10
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
   dependencies:
@@ -6664,9 +6656,6 @@ react-stockcharts@^0.6.1:
     lodash.flattendeep "^4.4.0"
     save-svg-as-png "^1.0.3"
 
-<<<<<<< HEAD
-"react@^15 || ^16", react@^15.6.1:
-=======
 react-stubber@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-stubber/-/react-stubber-1.0.0.tgz#41ee2cac72d4d4fd70a63896da98e13739b84628"
@@ -6701,7 +6690,6 @@ react-treebeard@^2.0.3:
     velocity-react "^1.3.1"
 
 react@^15.6.1:
->>>>>>> ee358fca692fd2d54df8eba39c66423671594b10
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
   dependencies:
